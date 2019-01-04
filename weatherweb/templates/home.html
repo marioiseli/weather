@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Weather info</title>
+	</head>
+	<body>
+		<p>The following real-time weather data is read from an Arduino and delivered through a webserver running on a Raspberry Pi</p>
+		<p>This never was supposed to become serious, was just a one day experient :-) - still, the sources and some documentation can be found on <a href="https://github.com/marioiseli/weather">GitHub</a></p>
+		<br><br>
+		<table border="1px">
+			<tr>
+				<td>Latest update</td><td>{{ u }}</td>
+			</tr>
+			<tr>
+				<td>Temperature</td><td>{{ x["weather"]["temperature"] }}&deg; Celsius</td>
+			</tr>
+			<tr>
+				<td>Humidity absolute</td><td>{{ x["weather"]["humidity_absolute"] }} g/m<sup>3</sup></td>
+			<tr>
+				<td>Humidity relative</td><td>{{ x["weather"]["humidity_relative"] }}%</td>
+			</tr>
+			<tr>
+				<td>Pressure at station (QFE)</td><td>{{ x["weather"]["qfe"] }} hPa</td>
+			</tr>
+				<td>Pressure at sea level (QNH)</td><td>{{ x["weather"]["qnh"] }} hPa</td>
+		</table>
+		<br>
+		<br>
+		<p>Temperature over the last 24hrs</p>
+		<img src="{{ url_for('send_static', path='temperature-day.png') }}"><br><br>
+		<p>Air pressure over the last 24hrs (QNH and QFE)</p>
+		<img src="{{ url_for('send_static', path='pressure-day.png') }}"><br><br>
+		<p>Air humidity over the last 24hrs (absolute and relative)</p>
+		<img src="{{ url_for('send_static', path='humidityabs-day.png') }}"><br>
+		<img src="{{ url_for('send_static', path='humidityrel-day.png') }}"><br><br>
+	</body>
+</html>
