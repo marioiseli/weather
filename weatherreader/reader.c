@@ -66,6 +66,7 @@ int qfe2qnh(float qfe, int alt)
 
 float hrel2habs(int r, float t)
 {
+	// Formula as described on https://carnotcycle.wordpress.com/2012/08/04/how-to-convert-relative-humidity-to-absolute-humidity/
 	return (6.112*pow(2.71828,((17.67*t)/(243.5+t)))*r*2.1674)/(273.15+t);
 };
 
